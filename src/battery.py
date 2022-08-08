@@ -10,9 +10,7 @@ try:
         output = f"✓ {percent}"
     else:
         output = f"✗ {percent}"
-except ValueError:
-    output = None
-except AttributeError:
+except (AttributeError, ValueError, TypeError):
     output = None
 
 if __name__ == "__main__":
