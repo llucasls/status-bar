@@ -1,5 +1,8 @@
 BIN="${HOME}/.local/bin"
 
+default:
+	cat instructions.txt
+
 install:
 	pip install -r requirements.txt
 
