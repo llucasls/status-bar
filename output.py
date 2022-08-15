@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-import time
-import os
-
 from status import status
 
 
