@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import time
 
 from cpu import output as cpu
