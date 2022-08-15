@@ -5,7 +5,5 @@ import os
 from status import status
 
 
-while os.environ["DESKTOP_SESSION"] == "dwm":
-    output = " | ".join(status)
-    print(output)
-    time.sleep(1)
+output = " | ".join(status)
+print(output)
