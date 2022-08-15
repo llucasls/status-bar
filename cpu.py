@@ -1,4 +1,4 @@
 import psutil
 
 
-output = psutil.cpu_percent(interval=0.3)
+output = psutil.cpu_percent(interval=4.9)
