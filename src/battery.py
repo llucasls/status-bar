@@ -3,7 +3,7 @@ import psutil
 
 
 try:
-    output = psutil.sensors_battery().percent
+    output = round(psutil.sensors_battery().percent, 2)
 except AttributeError:
     output = None
 
