@@ -3,7 +3,14 @@ import psutil
 
 
 try:
-    output = round(psutil.sensors_battery().percent, 2)
+    percent, *bat, power_plugged = psutil.sensors_battery()
+    percent = round(percent, 2)
+    if power_plugged:
+        output = f"✓ {percent}"
+    else:
+        output = f"✗ {percent}"
+except ValueError:
+    output = None
 except AttributeError:
     output = None
 
