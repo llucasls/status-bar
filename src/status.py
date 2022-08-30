@@ -1,21 +1,26 @@
 import time
 
-from cpu import output as cpu
-from ram import output as ram
-from disk import output as disk
-from battery import output as battery
+from cpu import cpu
+from ram import ram
+from disk import disk
+from battery import battery
 
 
-status = []
-system_info = {
-    "CPU": cpu,
-    "RAM": ram,
-    "Disk": disk,
-}
-if battery is not None:
-    system_info["battery"] = battery
+def status():
+    system_status = []
+    system_info = {
+        "CPU": cpu(),
+        "RAM": ram(),
+        "Disk": disk(),
+    }
+    battery_level = battery()
 
-for label, value in system_info.items():
-    status.append(f"{label}: {value}%")
+    if battery_level is not None:
+        system_info["battery"] = battery_level
 
-status.append(time.strftime("%A %d/%m/%Y %R"))
+    for label, value in system_info.items():
+        system_status.append(f"{label}: {value}%")
+
+    system_status.append(time.strftime("%A %d/%m/%Y %R"))
+
+    return(" | ".join(system_status))

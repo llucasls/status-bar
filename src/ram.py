@@ -2,7 +2,8 @@
 import psutil
 
 
-output = psutil.virtual_memory().percent
+def ram():
+    return(psutil.virtual_memory().percent)
 
 if __name__ == "__main__":
-    print(output)
+    print(ram())

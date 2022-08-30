@@ -2,7 +2,8 @@
 import psutil
 
 
-output = psutil.cpu_percent(interval=1.15)
+def cpu(interval=1.15):
+    return(psutil.cpu_percent(interval))
 
 if __name__ == "__main__":
-    print(output)
+    print(cpu())
