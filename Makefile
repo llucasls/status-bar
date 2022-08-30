@@ -1,5 +1,5 @@
-BIN = "${HOME}/.local/bin"
-SRC = "${PWD}/src"
+BIN = ${HOME}/.local/bin
+SRC = ${PWD}/src
 
 default:
 	cat instructions.txt
