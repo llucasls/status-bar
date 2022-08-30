@@ -2,3 +2,5 @@ To install dependencies, run:
 	make install
 To create symbolic links for the executable scripts:
 	make link
+To stop the status bar and remove the symbolic link:
+	make unlink
