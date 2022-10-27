@@ -1,5 +1,5 @@
-BIN = ${HOME}/.local/bin
-SRC = ${PWD}/src
+BIN = /usr/local/bin
+SRC = ${CURDIR}/src
 
 default:
 	cat instructions.txt
