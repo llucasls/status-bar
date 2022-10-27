@@ -16,5 +16,6 @@ def battery():
 
     return(output)
 
+
 if __name__ == "__main__":
     print(battery())
