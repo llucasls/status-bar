@@ -10,5 +10,5 @@ link:
 	ln -sf "$(SRC)/start.py" "$(BIN)/dwm-status-bar"
 
 unlink:
-	killall python
+	dwm-status-bar close
 	if test -L "$(BIN)/dwm-status-bar"; then rm "$(BIN)/dwm-status-bar"; fi
