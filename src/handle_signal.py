@@ -18,9 +18,9 @@ notification_time = json.loads(STATUS_BAR_NOTIFICATION_TIME) * 1000
 
 def notify(summary, body=None, expire_time=10_000):
     if body is None:
-        command = ["notify-send", "-t", expire_time, summary]
+        command = ["notify-send", f"--expire-time={expire_time}", summary]
     else:
-        command = ["notify-send", "-t", expire_time, summary, body]
+        command = ["notify-send", f"--expire-time={expire_time}", summary, body]
 
     run(command)
 
