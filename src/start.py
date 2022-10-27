@@ -15,9 +15,9 @@ signals = defaultdict(lambda: "exit",
 
 def notify(summary, body=None):
     if body is None:
-        command = ["notify-send", summary]
+        command = ["notify-send", "--expire-time=10000", summary]
     else:
-        command = ["notify-send", summary, body]
+        command = ["notify-send", "--expire-time=10000", summary, body]
 
     run(command)
 
