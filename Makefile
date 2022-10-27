@@ -1,8 +1,7 @@
 BIN = /usr/local/bin
 SRC = ${CURDIR}/src
 
-default:
-	cat instructions.txt
+all: install link
 
 install:
 	pip install -r requirements.txt
