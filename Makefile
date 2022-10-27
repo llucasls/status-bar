@@ -11,5 +11,4 @@ link:
 
 unlink:
 	killall python
-	xsetroot -name ""
 	if test -L "$(BIN)/dwm-status-bar"; then rm "$(BIN)/dwm-status-bar"; fi
