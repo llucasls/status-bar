@@ -2,6 +2,7 @@
 from os import environ
 from time import sleep
 from sys import exit
+from subprocess import run
 
 from status import status
 import handle_signal
