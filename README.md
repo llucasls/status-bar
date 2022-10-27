@@ -44,3 +44,15 @@ To turn off the script, you can use the command:
 ```
 dwm-status-bar close
 ```
+
+## Configuring
+
+The status bar can be configured using the following envirionment variables:
+```
+STATUS_BAR_NOTIFY=true
+STATUS_BAR_NOTIFICATION_TIME=10
+```
+The first one controls wether it will send a message through the notification
+daemon when the process terminates. It accepts the values "true" and "false".  
+The second one sets the duration of the notification, in seconds.  
+The defaults are the same as stated in the example above.
