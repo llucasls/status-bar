@@ -3,6 +3,12 @@
 This project comprises a series of scripts that show information on the status
 bar. It is meant to be used with suckless‘ dynamic window manager (dwm).
 
+## Features
+
+It shows cpu and ram usage, used space in disk (using the path "/"), battery
+level, battery changing status and current date and time. The battery only shows
+up on laptops.
+
 ## Install
 
 In order to use dwm status bar, you need to install the dependencies. Provided
