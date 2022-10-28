@@ -62,3 +62,9 @@ The first one controls wether it will send a message through the notification
 daemon when the process terminates. It accepts the values "true" and "false".  
 The second one sets the duration of the notification, in seconds.  
 The defaults are the same as stated in the example above.
+
+## Disclaimer
+
+This project is a work in progress. It started from my personal need to put
+useful information on the bar. If you have any doubts or if you found an error,
+feel free to open an issue.
