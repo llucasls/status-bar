@@ -17,12 +17,13 @@ except IndexError:
     pass
 
 
-while environ.get("DESKTOP_SESSION") == "dwm":
-    if not dwm.is_running():
-        sys.exit(0)
+if __name__ == "__main__":
+    while environ.get("DESKTOP_SESSION") == "dwm":
+        if not dwm.is_running():
+            sys.exit(0)
 
-    output = status()
-    command = ["xsetroot", "-name", output]
-    run(command)
+        output = status()
+        command = ["xsetroot", "-name", output]
+        run(command)
 
-    sleep(1.25)
+        sleep(1.25)
