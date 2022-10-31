@@ -4,6 +4,8 @@ import psutil
 
 
 def get_cmdline(process_info):
+    """Returns script name"""
+
     try:
         result = process_info["cmdline"][1]
     except (KeyError, IndexError):
@@ -13,6 +15,7 @@ def get_cmdline(process_info):
 
 
 def close():
+    """Closes all instances of dwm-status-bar"""
 
     status_bar_processes = []
 

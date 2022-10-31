@@ -3,6 +3,9 @@ import psutil
 
 
 def battery():
+    """Returns battery level and charging status.
+    If no battery is found, returns None."""
+
     try:
         percent, *bat, power_plugged = psutil.sensors_battery()
         percent = round(percent, 2)
