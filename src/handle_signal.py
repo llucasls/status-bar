@@ -1,6 +1,6 @@
 import os
-from subprocess import run
 import sys
+from subprocess import run, Popen
 from signal import signal, SIGHUP, SIGINT, SIGTERM
 from collections import defaultdict
 import json
@@ -12,9 +12,12 @@ signals = defaultdict(lambda: "exit",
 STATUS_BAR_NOTIFY = os.environ.get("STATUS_BAR_NOTIFY", "true")
 STATUS_BAR_NOTIFICATION_TIME = os.environ.get("STATUS_BAR_NOTIFICATION_TIME",
                                               "10")
+STATUS_BAR_RESTART_ON_SIGHUP = os.environ.get("STATUS_BAR_RESTART_ON_SIGHUP",
+                                              "false")
 
 should_notify = json.loads(STATUS_BAR_NOTIFY)
 notification_time = json.loads(STATUS_BAR_NOTIFICATION_TIME) * 1000
+restart_on_sighup = json.loads(STATUS_BAR_RESTART_ON_SIGHUP)
 
 
 def notify(summary, body=None, expire_time=10_000):
@@ -24,6 +27,12 @@ def notify(summary, body=None, expire_time=10_000):
         command = ["notify-send", f"--expire-time={expire_time}", summary, body]
 
     run(command)
+
+
+def hangup_handler(signum, frame):
+    Popen(["dwm-status-bar"])
+
+    sys.exit(signum + 128)
 
 
 def signal_handler(signum, frame):
@@ -37,6 +46,11 @@ def signal_handler(signum, frame):
     sys.exit(signum + 128)
 
 
-signal(SIGHUP, signal_handler)
+if restart_on_sighup:
+    signal(SIGHUP, hangup_handler)
+else:
+    signal(SIGHUP, signal_handler)
+
+
 signal(SIGINT, signal_handler)
 signal(SIGTERM, signal_handler)
