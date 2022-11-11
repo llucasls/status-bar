@@ -1,7 +1,7 @@
 # dwm status bar
 
 This project comprises a series of scripts that show information on the status
-bar. It is meant to be used with suckless‘ dynamic window manager (dwm).
+bar. It is meant to be used with suckless’ dynamic window manager (dwm).
 
 ## Features
 
