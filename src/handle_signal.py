@@ -1,5 +1,6 @@
 import os
 from subprocess import run
+import sys
 from signal import signal, SIGHUP, SIGINT, SIGTERM
 from collections import defaultdict
 import json
@@ -33,7 +34,7 @@ def handler(signum, frame):
 
     run(["xsetroot", "-name", ""])
 
-    exit(signum + 128)
+    sys.exit(signum + 128)
 
 
 signal(SIGHUP, handler)
