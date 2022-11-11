@@ -26,7 +26,7 @@ def notify(summary, body=None, expire_time=10_000):
     run(command)
 
 
-def handler(signum, frame):
+def signal_handler(signum, frame):
     if should_notify:
         notify("Signal Handler",
                f"Signal handler called with signal {signals[signum]}",
@@ -37,6 +37,6 @@ def handler(signum, frame):
     sys.exit(signum + 128)
 
 
-signal(SIGHUP, handler)
-signal(SIGINT, handler)
-signal(SIGTERM, handler)
+signal(SIGHUP, signal_handler)
+signal(SIGINT, signal_handler)
+signal(SIGTERM, signal_handler)
