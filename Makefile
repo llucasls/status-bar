@@ -14,3 +14,5 @@ unlink:
 		dwm-status-bar close; \
 		rm "$(BIN)/dwm-status-bar"; \
 	fi
+
+.PHONY: all install link unlink
