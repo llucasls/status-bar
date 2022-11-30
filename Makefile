@@ -10,5 +10,7 @@ link:
 	ln -sf "$(SRC)/start.py" "$(BIN)/dwm-status-bar"
 
 unlink:
-	dwm-status-bar close
-	if test -L "$(BIN)/dwm-status-bar"; then rm "$(BIN)/dwm-status-bar"; fi
+	if test -L "$(BIN)/dwm-status-bar"; then \
+		dwm-status-bar close; \
+		rm "$(BIN)/dwm-status-bar"; \
+	fi
