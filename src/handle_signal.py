@@ -29,13 +29,13 @@ def notify(summary, body=None, expire_time=10_000):
     run(command)
 
 
-def hangup_handler(signum, frame):
+def handle_hangup(signum, frame):
     Popen(["dwm-status-bar"])
 
     sys.exit(signum + 128)
 
 
-def signal_handler(signum, frame):
+def handle_signal(signum, frame):
     if should_notify:
         notify("Signal Handler",
                f"Signal handler called with signal {signals[signum]}",
@@ -47,10 +47,10 @@ def signal_handler(signum, frame):
 
 
 if restart_on_sighup:
-    signal(SIGHUP, hangup_handler)
+    signal(SIGHUP, handle_hangup)
 else:
-    signal(SIGHUP, signal_handler)
+    signal(SIGHUP, handle_signal)
 
 
-signal(SIGINT, signal_handler)
-signal(SIGTERM, signal_handler)
+signal(SIGINT, handle_signal)
+signal(SIGTERM, handle_signal)
