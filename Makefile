@@ -1,5 +1,5 @@
 BIN = /usr/local/bin
-SRC = ${CURDIR}/src
+SRC = $(PWD)/src
 
 all: install link
 
