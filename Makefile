@@ -1,10 +1,13 @@
 BIN = /usr/local/bin
 SRC = $(PWD)/src
 
+PYTHON = python
+PIP = $(PYTHON) -m pip
+
 all: install link
 
 install:
-	pip install -r requirements.txt
+	$(PIP) install -r requirements.txt
 
 link:
 	ln -sf "$(SRC)/start.py" "$(BIN)/dwm-status-bar"
