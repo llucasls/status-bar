@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import psutil
+import platform
 
 
 def read_meminfo():
@@ -39,4 +39,5 @@ def ram():
 
 
 if __name__ == "__main__":
-    print(ram())
+    if platform.uname().system == "NetBSD":
+        print(ram())
