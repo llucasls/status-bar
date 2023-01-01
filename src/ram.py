@@ -7,10 +7,21 @@ def ram():
 
 
 def proc():
-    result = []
+    result = {}
     with open("/proc/meminfo", "r") as meminfo:
+        counter = 0
+        while counter < 3:
+            meminfo.readline()
+            counter += 1
+
         for line in meminfo.readlines():
-            result.append(line)
+            label, value, unit = line.strip().split()
+            value = int(value)
+            if unit == "kB":
+                value *= 1024
+
+            result[label] = value
+
 
     return result
 
