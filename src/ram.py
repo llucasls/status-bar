@@ -16,6 +16,7 @@ def read_meminfo():
 
         for line in meminfo.readlines():
             label, value, unit = line.strip().split()
+            label = label.removesuffix(":")
             value = int(value)
             if unit == "kB":
                 value *= 1024
