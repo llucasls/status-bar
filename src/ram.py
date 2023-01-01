@@ -2,10 +2,6 @@
 import psutil
 
 
-def ram():
-    return(psutil.virtual_memory().percent)
-
-
 def read_meminfo():
     result = {}
     with open("/proc/meminfo", "r") as meminfo:
@@ -25,6 +21,21 @@ def read_meminfo():
 
 
     return result
+
+
+def ram():
+    memory = read_meminfo()
+
+    mem_total = memory["MemTotal"]
+    mem_free = memory["MemFree"]
+    mem_used = mem_total - mem_free
+
+    mem_percent = mem_used / mem_total * 100
+
+    if mem_percent < 100:
+        return "{:>4.1f}".format(mem_percent)
+
+    return " 100"
 
 
 if __name__ == "__main__":
