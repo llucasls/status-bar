@@ -6,7 +6,7 @@ def ram():
     return(psutil.virtual_memory().percent)
 
 
-def proc():
+def read_meminfo():
     result = {}
     with open("/proc/meminfo", "r") as meminfo:
         counter = 0
