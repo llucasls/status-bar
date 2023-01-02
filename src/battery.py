@@ -1,19 +1,34 @@
 #!/usr/bin/env python
 import platform
-from subprocess import check_output
+import subprocess as sp
+import json
+
 import psutil
 
 
 def battery_netbsd():
     ENVSTAT = "/usr/sbin/envstat"
-    command = [ENVSTAT, "-s", "acpibat0:charge"]
+    command = [ENVSTAT, "-s", "acpibat0:charge,acpibat0:charging"]
 
-    command_output = check_output(command).decode("UTF-8")
-    output_lines = command_output.strip().split("\n")
+    command_output = sp.run(command, stdout = sp.PIPE)
+    if command_output.returncode != 0:
+        return None
 
-    result = output_lines[2].split("(")[1].split("%)")[0]
+    stdout = command_output.stdout.decode("UTF-8")
+    output_lines = stdout.strip().split("\n")
 
-    return result
+    charge = output_lines[2]
+    charging = output_lines[3].split()[1]
+
+    percent = float(charge.split("(")[1].split("%)")[0])
+    power_plugged = json.loads(charging.lower())
+
+    if power_plugged:
+        output = f"✓ {percent}"
+    else:
+        output = f"✗ {percent}"
+
+    return output
 
 
 def battery_linux():
