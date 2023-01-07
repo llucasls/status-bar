@@ -26,7 +26,7 @@ def battery_netbsd():
     if power_plugged:
         output = f"✓ {percent}"
     else:
-        output = f"✗ {percent}"
+        output = f"x {percent}"
 
     return output
 
