@@ -20,7 +20,7 @@ def battery_netbsd():
     charge = output_lines[2]
     charging = output_lines[3].split()[1]
 
-    percent = float(charge.split("(")[1].split("%)")[0])
+    percent = min(float(charge.split("(")[1].split("%)")[0]), 100)
     power_plugged = json.loads(charging.lower())
 
     if power_plugged:
