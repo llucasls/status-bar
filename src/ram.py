@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import platform
 
+from psutil import virtual_memory
+
 
 def read_meminfo_linux():
     result = {}
@@ -78,7 +80,7 @@ def ram():
     elif platform.uname().system == "NetBSD":
         return ram_netbsd()
 
-    return None
+    return "{:>4.1f}".format(virtual_memory().percent)
 
 
 if __name__ == "__main__":
