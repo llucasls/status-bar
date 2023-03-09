@@ -3,7 +3,7 @@ import psutil
 
 
 def cpu(interval=1.15):
-    return(psutil.cpu_percent(interval))
+    return "{:>4.1f}".format(psutil.cpu_percent(interval))
 
 
 if __name__ == "__main__":
