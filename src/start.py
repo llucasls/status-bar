@@ -18,7 +18,7 @@ except IndexError:
 
 
 if __name__ == "__main__":
-    while environ.get("DESKTOP_SESSION") == "dwm":
+    while True:
         if not dwm.is_running():
             sys.exit(0)
 
