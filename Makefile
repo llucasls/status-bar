@@ -1,7 +1,7 @@
 BIN = /usr/local/bin
 SRC = $(PWD)/src
 
-PYTHON = python
+PYTHON = python3
 PIP = $(PYTHON) -m pip
 
 all: install link
