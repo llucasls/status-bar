@@ -43,7 +43,7 @@ def battery_linux():
     except (AttributeError, ValueError, TypeError):
         output = None
 
-    return(output)
+    return output
 
 
 def battery():
