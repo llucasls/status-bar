@@ -34,8 +34,8 @@ def battery_netbsd():
 def battery_linux():
     try:
         percent, *bat, power_plugged = psutil.sensors_battery()
-        percent = round(percent, 2)
-        percent = format(percent, "0<5")
+        percent = round(percent, 2) if percent < 100 else 100
+        percent = format(percent, " >5")
         if power_plugged:
             output = f"✓ {percent}"
         else:
