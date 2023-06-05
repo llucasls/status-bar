@@ -3,7 +3,7 @@ import psutil
 
 
 def disk():
-    return(psutil.disk_usage("/").percent)
+    return "{:>4.1f}".format(psutil.disk_usage("/").percent)
 
 
 if __name__ == "__main__":
