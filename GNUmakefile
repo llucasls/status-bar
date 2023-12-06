@@ -7,15 +7,20 @@ PIP = $(PYTHON) -m pip
 all: install link
 
 install:
-	$(PIP) install -r requirements.txt
+	$(MAKE) --no-print-directory -f config.mk install
 
-link:
+link: | $(BIN)
 	ln -sf "$(SRC)/start.py" "$(BIN)/dwm-status-bar"
 
+$(BIN):
+	mkdir -p $@
+
 unlink:
-	if test -L "$(BIN)/dwm-status-bar"; then \
-		dwm-status-bar close; \
-		rm "$(BIN)/dwm-status-bar"; \
+	if test -L "$(BIN)/dwm-status-bar"; then
+		dwm-status-bar close
+		rm "$(BIN)/dwm-status-bar"
 	fi
 
 .PHONY: all install link unlink
+
+.ONESHELL:
